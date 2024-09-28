@@ -15,6 +15,7 @@ mainLogIn && mainLogIn.addEventListener('click', () => {
 var usersArr = []
 var signupPage = document.getElementById("signUpbtn")
 signupPage && signupPage.addEventListener('click', () => {
+    location.href="login.html"
     var name = document.getElementById("signup-name");
     var email = document.getElementById("signup-email");
     var passward = document.getElementById("signup-passward");
@@ -27,13 +28,13 @@ signupPage && signupPage.addEventListener('click', () => {
         userEmail: email.value,
         userPassward: passward.value
     }
-    var users = JSON.parse(localStorage.getItem("userData"))
+    var users = JSON.parse(localStorage.getItem("userData"))||[]
     users.push(obj);
     localStorage.setItem('userData', JSON.stringify(users));
     name.value = "";
     email.value = "";
     passward.value = "";
-    location.href="login.html"
+    
 })
 //signuppage button funstion finished
 
@@ -50,7 +51,7 @@ loginPage&&loginPage.addEventListener('click',()=>{
             userFound=true
             break;
         }else{
-            alert("sorry")
+            alert("welcome new user")
             break;
         }
     }
