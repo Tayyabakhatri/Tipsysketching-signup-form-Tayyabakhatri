@@ -12,7 +12,7 @@ mainLogIn && mainLogIn.addEventListener('click', () => {
 
 
 //signuppage button funstion
-var usersArr = []
+// var usersArr = []
 var signupPage = document.getElementById("signUpbtn")
 signupPage && signupPage.addEventListener('click', () => {
     location.href="login.html"
