@@ -15,12 +15,12 @@ mainLogIn && mainLogIn.addEventListener('click', () => {
 // var usersArr = []
 var signupPage = document.getElementById("signUpbtn")
 signupPage && signupPage.addEventListener('click', () => {
-    location.href="login.html"
+    
     var name = document.getElementById("signup-name");
     var email = document.getElementById("signup-email");
     var passward = document.getElementById("signup-passward");
     if (!name.value || !email.value || !passward.value) {
-        alert("dear user you are trying to sign in without filling fields")
+        alert("you are trying to register empty fields")
         return;
     }
     var obj = {
@@ -28,32 +28,34 @@ signupPage && signupPage.addEventListener('click', () => {
         userEmail: email.value,
         userPassward: passward.value
     }
-    var users = JSON.parse(localStorage.getItem("userData"))||[]
+    var users = JSON.parse(localStorage.getItem("userData")) || []
     users.push(obj);
     localStorage.setItem('userData', JSON.stringify(users));
+    // Show success notification
+    alert("registered successfully ")
     name.value = "";
     email.value = "";
     passward.value = "";
-    
+  location.href = "login.html"
 })
 //signuppage button funstion finished
 
 //login Page functionalities 
 var loginPage = document.getElementById("loginbtn")
-loginPage&&loginPage.addEventListener('click',()=>{
+loginPage && loginPage.addEventListener('click', () => {
     var users = JSON.parse(localStorage.getItem("userData"))
-    var loginEmail= document.getElementById("loginEmail")
-    var loginPassward= document.getElementById("loginPassward")
-    var userFound=false
-    for(var user of users){
-        if(user.userEmail==loginEmail.value&&user.userPassward==loginPassward.value){
-            alert("welcome")
-            userFound=true
-            break;
-        }else{
-            alert("welcome new user")
+    var loginEmail = document.getElementById("loginEmail")
+    var loginPassward = document.getElementById("loginPassward")
+    var userFound = false
+    for (var user of users) {
+        if (user.userEmail == loginEmail.value && user.userPassward == loginPassward.value) {
+            alert("welcom back")
+            userFound = true
             break;
         }
+    }
+    if (!userFound) {
+       alert("welcom new user")
     }
 
 })
