@@ -88,7 +88,11 @@ loginPage && loginPage.addEventListener('click', () => {
     var userFound = false
     for (var user of users) {
         if (user.userEmail == loginEmail.value && user.userPassward == loginPassward.value) {
-            alert("welcom back")
+            Swal.fire({
+                title: "welcome to our mystry!",
+                // text: "You clicked the button!",
+                icon: "success"
+              });
             userFound = true
             break;
         }
