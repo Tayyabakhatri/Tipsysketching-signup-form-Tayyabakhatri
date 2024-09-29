@@ -15,12 +15,28 @@ mainLogIn && mainLogIn.addEventListener('click', () => {
 // var usersArr = []
 var signupPage = document.getElementById("signUpbtn")
 signupPage && signupPage.addEventListener('click', () => {
-    
+
     var name = document.getElementById("signup-name");
     var email = document.getElementById("signup-email");
     var passward = document.getElementById("signup-passward");
     if (!name.value || !email.value || !passward.value) {
-        alert("you are trying to register empty fields")
+        Swal.fire({
+            title: "you are trying to submit empty field",
+            showClass: {
+              popup: `
+                animate__animated
+                animate__fadeInUp
+                animate__faster
+              `
+            },
+            hideClass: {
+              popup: `
+                animate__animated
+                animate__fadeOutDown
+                animate__faster
+              `
+            }
+          });
         return;
     }
     var obj = {
@@ -32,11 +48,34 @@ signupPage && signupPage.addEventListener('click', () => {
     users.push(obj);
     localStorage.setItem('userData', JSON.stringify(users));
     // Show success notification
-    alert("registered successfully ")
+    let timerInterval;
+    Swal.fire({
+        // title: "Auto close alert!",
+        html: "Registring your data",
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+                timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+        },
+        willClose: () => {
+            clearInterval(timerInterval);
+        }
+    }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+        }
+    });
     name.value = "";
     email.value = "";
     passward.value = "";
-  location.href = "login.html"
+    setTimeout(()=>{
+        location.href = "login.html"
+    },3000)
 })
 //signuppage button funstion finished
 
@@ -55,13 +94,13 @@ loginPage && loginPage.addEventListener('click', () => {
         }
     }
     if (!userFound) {
-       alert("welcom new user")
+        alert("welcom new user")
     }
 
 })
 var img = document.getElementById("loginimg")
-img.addEventListener('click',()=>{
-    location.href="index.html"
+img.addEventListener('click', () => {
+    location.href = "index.html"
 })
 
 
