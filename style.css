@@ -2,31 +2,10 @@
     font-family: "script";
     src: url(fonts/ITCEDSCR.TTF);
 }
-
-#image-div {
-  position: relative; /* Make it relative to properly align the content */
-  z-index: 1;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+body{
+background-color: black;
+  
 }
-
-#background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  z-index: -1; /* Set video behind other content */
-  object-fit: cover; /* Ensure the video covers the entire screen */
-  overflow: hidden;
-
-
-}
-
 /* Media query for small screens */
 @media (max-width: 768px) {
   #background-video {
@@ -35,10 +14,6 @@
     object-fit: cover; /* Maintain covering behavior */
   }
 }
-
-
-
-
 #singin,
 #singup {
     color: white;
@@ -46,14 +21,12 @@
     font-size:large;
     background-color: #272e3571;
 }
-
 #h1 {
     font-family: script;
     font-size: 100px;
     color: white;
-    
-}
-@media screen and(min-width:375px)and(max-width:500px){
+  }
+    @media screen and(min-width:375px)and(max-width:500px){
     #h1{
         font-size: 50px;
     }
@@ -124,6 +97,10 @@
     height: 40vh;
     background-position: center;
     border-radius: 15px;
+    box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.575);
+  }
+  #loginimg:hover{
+    transform: translateY(10px) ;
   }
    #loginbtn{
     background-color: #d19306;

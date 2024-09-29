@@ -59,8 +59,10 @@ loginPage && loginPage.addEventListener('click', () => {
     }
 
 })
-
-
+var img = document.getElementById("loginimg")
+img.addEventListener('click',()=>{
+    location.href="index.html"
+})
 
 
 
